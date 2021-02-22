@@ -1,4 +1,4 @@
-package com.kimi.leetfight.toeplitz_matrix;
+package com.kimi.leetfight.toeplitz_matrix_766;
 
 /**
  * Copyright (c) 2021 Kimi. All Rights Reserved
