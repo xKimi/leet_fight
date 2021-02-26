@@ -49,6 +49,106 @@ public class Sort {
         }
     }
 
+    public static void mergeSort(Comparable[] nums, int lo, int mid, int hi) {
+        Comparable[] newNums = new Comparable[nums.length];
+        int i = lo, j = mid + 1;
+        for (int k = lo; k < hi; k++) {
+            newNums[k] = nums[k];
+        }
+        for (int k = lo; k <= hi; k++) {
+            if (i > mid) {
+                nums[k] = newNums[j++];
+            } else if (j > hi) {
+                nums[k] = newNums[i++];
+            } else if (less(newNums[j], nums[j])) {
+                nums[k] = newNums[j++];
+            } else {
+                nums[k] = newNums[i++];
+            }
+        }
+    }
+
+    public static void sort(Comparable[] a) {
+        Comparable[] aux = new Comparable[a.length];
+        sort(a, 0, a.length - 1);
+    }
+
+    private static void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) {
+            return;
+        }
+        int mid = lo + (hi - lo) / 2;
+        sort(a, lo, mid);
+        sort(a, mid + 1, hi);
+        mergeSort(a, lo, mid, hi);
+    }
+
+    /**
+     * 自底向上的归并
+     * @param a 排序前数组
+     */
+    public static void mergeFromBottom(Comparable[] a) {
+        int n = a.length;
+        Comparable[] aux = new Comparable[n];
+        for (int sz = 1; sz < n; sz = sz + sz) {
+            for (int lo = 0; lo < n - sz; lo += sz + sz) {
+                mergeSort(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, n - 1));
+            }
+        }
+    }
+
+    public static void quickSort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) {
+            return;
+        }
+        int j = partition(a, lo, hi);
+        quickSort(a, lo, j - 1);
+        quickSort(a, j + 1, hi);
+    }
+
+    public static void quick3Sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) {
+            return;
+        }
+        int lt = lo, i = lo + 1, gt = hi;
+        Comparable v = a[lo];
+        while (i <= gt) {
+            int cmp = a[i].compareTo(v);
+            if (cmp < 0) {
+                exch(a, lt++, i++);
+            } else if (cmp > 0) {
+                exch(a, i, gt--);
+            } else {
+                i++;
+            }
+        }
+        sort(a, lo, lt - 1);
+        sort(a, gt + 1, hi);
+    }
+
+    private static int partition(Comparable[] a, int lo, int hi) {
+        int i = lo, j = hi + 1;
+        Comparable v = a[lo];
+        while (true) {
+            while (less(a[++i], v)) {
+                if (i == hi) {
+                    break;
+                }
+            }
+            while (less(v, a[--j])) {
+                if (j == lo) {
+                    break;
+                }
+            }
+            if (i >= j) {
+                break;
+            }
+            exch(a, i, j);
+        }
+        exch(a, lo, j);
+        return j;
+    }
+
     private static void exch(Comparable[] nums, int i, int j) {
         System.out.println("exchange element " + nums[i] + " and " + nums[j]);
         Comparable temp = nums[i];
