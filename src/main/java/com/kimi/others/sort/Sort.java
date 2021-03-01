@@ -1,5 +1,8 @@
 package com.kimi.others.sort;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Copyright (c) 2021 Kimi. All Rights Reserved
  *
@@ -9,6 +12,7 @@ package com.kimi.others.sort;
 public class Sort {
 
     public static void selectionSort(Comparable[] nums) {
+        Arrays.sort(nums);
         int n = nums.length;
         for (int i = 0; i < n; i++) {
             int min = i;
@@ -175,6 +179,33 @@ public class Sort {
             }
         }
         return true;
+    }
+
+    public static void heapSort(Comparable[] a) {
+        int n = a.length;
+        for (int k = n / 2; k >= 1; k--) {
+            sink(a, k, n);
+        }
+
+        while (n > 1) {
+            exch(a, 1, n--);
+            sink(a, 1, n);
+        }
+    }
+
+    private static void sink(Comparable[] a, int k, int n) {
+        Comparable temp = a[k];
+        for (int i = 2 * k + 1; i < n; i = i * 2 + 1) {
+            if (i + 1 < n && less(a[i], a[i + 1])) {
+                i++;
+            }
+            if (less(temp, a[i])) {
+                a[k] = a[i];
+            } else {
+                break;
+            }
+        }
+        a[k] = temp;
     }
 
     public static void main(String[] args) {
