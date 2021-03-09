@@ -1,2 +1,3 @@
-# leet_fight
-leet code fighting
+#personal_daily
+
+daily study & practise
