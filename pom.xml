@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kimi</groupId>
-    <artifactId>leetfight</artifactId>
+    <artifactId>personaldaily</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>leetfight</name>
+    <name>personaldaily</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
