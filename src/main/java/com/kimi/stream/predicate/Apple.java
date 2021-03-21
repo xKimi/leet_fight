@@ -1,0 +1,32 @@
+package com.kimi.stream.predicate;
+
+import java.util.Optional;
+
+/**
+ * Created on 2021/3/21.
+ * Copyright xKimi.inc
+ *
+ * @author Kimi
+ */
+public class Apple {
+
+    private String color;
+
+    private Integer weight;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+}
