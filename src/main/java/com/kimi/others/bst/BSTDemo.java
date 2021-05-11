@@ -21,6 +21,22 @@ public class BSTDemo {
         }
     }
 
+    // BST通用遍历
+    void BST(TreeNode root, int target) {
+        if (root == null) {
+            return;
+        }
+        if (root.val == target) {
+            // do something here
+        }
+        if (root.val < target) {
+            BST(root.right, target);
+        }
+        if (root.val > target) {
+            BST(root.left, target);
+        }
+     }
+
     boolean isValidBST(Node root) {
         return isValidBST(root, null, null);
     }

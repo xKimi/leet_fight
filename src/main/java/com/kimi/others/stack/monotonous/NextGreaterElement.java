@@ -1,4 +1,4 @@
-package com.kimi.others.stack;
+package com.kimi.others.stack.monotonous;
 
 import java.util.ArrayList;
 import java.util.List;
